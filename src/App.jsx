@@ -1,10 +1,15 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import NavBar from "./components/NavBar"
 import './App.css'
+
 
 function App() {
   
-  return <h1>Voice GPT</h1>
+  return <>
+    <NavBar/>
+  </>
 }
 
 export default App
