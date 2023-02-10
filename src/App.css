@@ -145,6 +145,30 @@ body {
   font-size: 1.3rem;
 }
 
+a {
+  text-decoration: none;
+}
+
+footer {
+  display: grid;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.footer__links {
+  display: flex;
+  gap: 1.1rem;
+  justify-content: center;
+}
+
+.footer__links .icon {
+  font-size: 1.2rem;
+}
+
+.heart {
+  color: red;
+}
+
 @media screen and (min-width: 768px){
   .nav__menu__wrapper {
       max-width: 320px;
