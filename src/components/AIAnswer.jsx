@@ -10,7 +10,7 @@ const AIAnswer = () => {
 			<p>
 				AI Answers: Lorem ipsum dolor sit amet, consectetur adipisicing
 				elit. Impedit odit sit laborum iste suscipit, quaerat facere
-				porro quidem cumque.{" "}
+				porro quidem cumque.
 			</p>
 		</div>
 	);

@@ -6,7 +6,7 @@ const SentMessage = () => {
 			<div className="icon__wrapper">
 				<FiUser className="user__icon" />
 			</div>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. ?
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. ? </p>
 		</div>
 	);
 };

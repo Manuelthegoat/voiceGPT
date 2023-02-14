@@ -3,7 +3,7 @@ import SideBar from "./SideBar";
 
 function NavBar() {
 	return (
-		<>
+		<div>
 			<header>
 				<nav>
 					<div className="nav__container">
@@ -15,7 +15,7 @@ function NavBar() {
 			</header>
 
 			<SideBar />
-		</>
+		</div>
 	);
 }
 
