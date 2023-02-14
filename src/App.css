@@ -100,6 +100,7 @@ body {
   border: none;
   height: auto;
   width: 100%;
+  resize: none;
 }
 
 .send__icon {
@@ -170,17 +171,26 @@ footer {
   color: red;
 }
 
+
 @media screen and (min-width: 768px){
   .nav__menu__wrapper {
-      max-width: 320px;
-      position: relative;
+      width: 26%;
+      position: fixed;
+      left: 0;
+      height: 100vh;
   }
 
+
   main {
-    display: flex;
+    display: grid;
+    margin: 0 26%;
   }
 
   .nav__container {
     display: none;
+  }
+
+  .message__wrapper, .chatbox__wrapper {
+    width: 74vw;
   }
 }
