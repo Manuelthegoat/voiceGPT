@@ -8,15 +8,21 @@ import AIAnswer from "./components/AIAnswer";
 
 function App() {
 	return (
-		<>
+		// <div className="wrapper">
+		<main>
 			<NavBar />
-			<main>
-			<SentMessage />
-			<AIAnswer />
-			<ChatBar />
-			</main>
-		</>
-		
+
+				<SentMessage />
+				<AIAnswer />
+				<SentMessage />
+				<AIAnswer />
+				<SentMessage />
+				<AIAnswer />
+				<SentMessage />
+				<AIAnswer />
+				<ChatBar />
+		</main>
+		// </div>
 	);
 }
 
