@@ -1,9 +1,14 @@
-import {HiPlus, HiChatAlt} from "react-icons/hi";
+import { HiPlus, HiChatAlt, HiX } from "react-icons/hi";
 
 
-const SideBar = () => {
+const SideBar = ({ menu, handleMenu }) => {
+
 	return (
-		<div className="nav__menu__wrapper">
+		<div className={menu ? "sidebar__wrapper show" : "sidebar__wrapper"}> 
+		
+		<div
+			className="nav__menu__wrapper"
+		>
 			<div className="nav__menu">
 				<div className="new__chat">
 					<HiPlus /> New chat
@@ -19,7 +24,11 @@ const SideBar = () => {
 				</div>
 			</div>
 		</div>
-	);
-};
 
+		<HiX onClick={handleMenu} className="icon close__menu"/>
+
+		 </div>
+		
+	)
+}
 export default SideBar;
