@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HiMenuAlt2, HiPlus, HiChatAlt, HiX } from "react-icons/hi";
+import { HiPlus, HiChatAlt, HiX, HiMenuAlt4, HiMenuAlt3, HiOutlineMenuAlt1 } from "react-icons/hi";
 import SideBar from "./SideBar";
 
 function NavBar() {
@@ -14,9 +14,9 @@ function NavBar() {
 			<header>
 				<nav>
 					<div className="nav__container">
-						<HiMenuAlt2
+						<HiOutlineMenuAlt1
 							onClick={() => setMenu(!menu)}
-							className="icon menu__icon"
+							className="icon menu__icon nav__icon__wrapper"
 						/>
 						New chat
 						<HiPlus className="icon" />

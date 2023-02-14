@@ -14,6 +14,12 @@ function App() {
 
 				<SentMessage />
 				<AIAnswer />
+				<SentMessage />
+				<AIAnswer />
+				<SentMessage />
+				<AIAnswer />
+				<SentMessage />
+				<AIAnswer />
 				<ChatBar />
 		</main>
 		// </div>
