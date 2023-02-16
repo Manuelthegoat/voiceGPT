@@ -4,9 +4,13 @@ import TextareaAutosize from 'react-textarea-autosize';
 import {FiSend} from "react-icons/fi"
 import { useState } from 'react';
 
-const ChatBar = () => {
+const ChatBar = ({setQuery}) => {
 
     const [userInput, setUserInput] = useState("")
+
+    const submit = () => {
+        setQuery(userInput)
+    }
 
     // Update the text area
     const handleInput = (e) => {
@@ -20,7 +24,7 @@ const ChatBar = () => {
                 value={userInput} 
                 onChange={handleInput}
                 />
-            <FiSend className="send__icon"/>
+            <FiSend onClick={submit} className="send__icon"/>
         </div>
         <Footer />
     </div>
