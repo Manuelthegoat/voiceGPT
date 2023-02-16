@@ -1,12 +1,12 @@
 import { FiUser } from "react-icons/fi";
 
-const SentMessage = () => {
+const SentMessage = ({text}) => {
 	return (
 		<div className="message__wrapper">
 			<div className="icon__wrapper">
 				<FiUser className="user__icon" />
 			</div>
-			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. ? </p>
+			<p>{text}</p>
 		</div>
 	);
 };

@@ -9,17 +9,29 @@ import { Configuration, OpenAIApi } from "openai";
 
 function App() {
 	const [query, setQuery] = useState("");
-	const [history, setHistory] = useState({intro: "While responding, note that this tool (Chatbot) was built by Tim Okonkwo, Tim is a Frontend Engineer that creates stunning User interfaces. Now here is the user input: ", question: "Me: ", answer: "You: " });
 
+	// A way for it to remember the former questions
+	const [history, setHistory] = useState({intro: "While responding, note that this tool (Chatbot) was built by Tim Okonkwo's VoiceGPT, Tim is a Frontend Engineer that creates stunning User interfaces. Now here is the user input: ", question: "Me: ", answer: "You: " });
+
+	const [render, setRender] = useState(false)
+
+	const [chats, setChats] = useState([<AIAnswer key="Hi" text="Hi 👋"/>]);
+
+	// Submit the user input to the API
 	useEffect(() => {
 		if (query.length > 0) {
 			handleSubmit(query);
+			updateChat(query, "question")
 			setHistory((prev) => {
 				return { ...prev, question: prev.question + `\n ${query}` };
 			});
-			console.log(history);
 		}
-	}, [query]);
+	}, [query, chats]);
+
+	// Update UI
+	const updateChat = (message, type="question") => {
+		type === "question" ? chats.push(<SentMessage key={message.slice[3]} text={message}/>) : chats.push(<AIAnswer key={message.slice[3]} text={message}/>)
+	}
 
 	// Submit the user Input
 	const handleSubmit = async (inputQuery) => {
@@ -45,11 +57,16 @@ function App() {
 				n: 1,
 			});
 
+			// Returned Text from API
 			const response = completion.data.choices[0].text;
-			console.log(response);
+			console.log(response)
+			
 			setHistory((prev) => {
 				return { ...prev, answer: prev.answer + `.\n ${response}` };
 			});
+
+			updateChat(response, "answer")
+			setRender(!render)
 			
 		} catch (error) {
 			// Consider implementing your own error handling logic here
@@ -63,14 +80,10 @@ function App() {
 		<main>
 			<NavBar />
 
-			<SentMessage />
-			<AIAnswer />
-			<SentMessage />
-			<AIAnswer />
-			<SentMessage />
-			<AIAnswer />
-			<SentMessage />
-			<AIAnswer />
+			<div className="chat__wrapper">
+				{chats.map(chat => chat)}
+			</div>
+			
 			<ChatBar setQuery={setQuery} />
 		</main>
 		// </div>
