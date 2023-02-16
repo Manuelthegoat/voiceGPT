@@ -94,6 +94,10 @@
 	gap: 1.2rem;
 }
 
+.chat__wrapper {
+	/* overflow-y: scroll; */
+}
+
 /* Chatbox */
 .chatbox__wrapper {
 	position: fixed;
