@@ -232,7 +232,7 @@ footer {
 	}
 
 	main {
-		display: grid;
+		/* display: grid; */
 		margin: 0 26%;
 	}
 
@@ -248,8 +248,12 @@ footer {
 		display: none;
 	}
 
-	.message__wrapper,
 	.chatbox__wrapper {
-		width: 74vw;
+		width: 73.9vw;
+		margin-right: 10%;
+	}
+
+	.chat__wrapper {
+		width: 73.9vw;
 	}
 }

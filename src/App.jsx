@@ -9,15 +9,19 @@ import { Configuration, OpenAIApi } from "openai";
 
 function App() {
 	const [query, setQuery] = useState("");
+
+	// A way for it to remember the former questions
 	const [history, setHistory] = useState({intro: "While responding, note that this tool (Chatbot) was built by Tim Okonkwo, Tim is a Frontend Engineer that creates stunning User interfaces. Now here is the user input: ", question: "Me: ", answer: "You: " });
 
+	// const []
+
+	// Submit the user input to the API
 	useEffect(() => {
 		if (query.length > 0) {
 			handleSubmit(query);
 			setHistory((prev) => {
 				return { ...prev, question: prev.question + `\n ${query}` };
 			});
-			console.log(history);
 		}
 	}, [query]);
 
@@ -45,8 +49,8 @@ function App() {
 				n: 1,
 			});
 
+			// Returned Text from API
 			const response = completion.data.choices[0].text;
-			console.log(response);
 			setHistory((prev) => {
 				return { ...prev, answer: prev.answer + `.\n ${response}` };
 			});
@@ -63,6 +67,7 @@ function App() {
 		<main>
 			<NavBar />
 
+			<div className="chat__wrapper">
 			<SentMessage />
 			<AIAnswer />
 			<SentMessage />
@@ -71,6 +76,8 @@ function App() {
 			<AIAnswer />
 			<SentMessage />
 			<AIAnswer />
+			</div>
+			
 			<ChatBar setQuery={setQuery} />
 		</main>
 		// </div>
