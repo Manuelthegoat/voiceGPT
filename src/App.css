@@ -10,8 +10,6 @@
 	font-family: "Inter", sans-serif;
 }
 
-body {
-}
 
 .sidebar__wrapper {
 	left: -100%;
@@ -160,8 +158,8 @@ body {
 }
 
 .message__wrapper p {
-	word-spacing: 2px;
-	text-align: justify;
+	word-spacing: 2.2px;
+	text-align:unset;
 }
 
 .icon__wrapper {
@@ -203,10 +201,22 @@ footer {
 	display: flex;
 	gap: 1.1rem;
 	justify-content: center;
+	padding: .3rem 0;
+	box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.15);
 }
 
 .footer__links .icon {
 	font-size: 1.1rem;
+}
+
+.footer__links .icon:last-child, .footer__links .icon:first-child {
+	color: #589df1;
+}
+
+footer a {
+	text-decoration: none;
+	/* color:var(--nav-bg-color); */
+	font-weight: bold;
 }
 
 .heart {
