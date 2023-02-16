@@ -76,6 +76,8 @@ function App() {
 			<AIAnswer />
 			<SentMessage />
 			<AIAnswer />
+			<AIAnswer />
+			<AIAnswer />
 			</div>
 			
 			<ChatBar setQuery={setQuery} />

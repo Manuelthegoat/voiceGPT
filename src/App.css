@@ -137,10 +137,16 @@ body {
 	border-radius: 0.45rem;
 }
 
-.send__icon:hover {
-	background-color: rgba(0, 0, 0, 0.15);
-	font-size: 1.7rem;
-	padding: 0 0.3rem;
+.send__icon__wrapper {
+	background: none !important;
+	transition: .5s;
+	grid-template-columns: 1fr 1fr;
+	column-gap: .6rem;
+}
+
+.send__icon__wrapper:hover .message {
+	transform: rotateX(360deg);
+	transition: .7s
 }
 
 .message__wrapper {
@@ -248,12 +254,14 @@ footer {
 		display: none;
 	}
 
+	.chat__wrapper {
+		width: 73vw;
+	}
 	.chatbox__wrapper {
-		width: 73.9vw;
+		width: 73vw;
 		margin-right: 10%;
+		padding: inherit 1rem;
 	}
 
-	.chat__wrapper {
-		width: 73.9vw;
-	}
+	
 }
