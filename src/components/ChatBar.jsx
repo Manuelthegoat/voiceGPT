@@ -10,11 +10,12 @@ const ChatBar = ({ setQuery }) => {
 
 	const submit = () => {
 		setQuery(userInput);
+        setUserInput("")
 	};
 
 	// Update the text area
 	const handleInput = (e) => {
-		setUserInput((prev) => e.target.value);
+		setUserInput(e.target.value);
 	};
 
 	return (

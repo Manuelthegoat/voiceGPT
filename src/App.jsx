@@ -82,9 +82,11 @@ function App() {
 
 			<div className="chat__wrapper">
 				{chats.map(chat => chat)}
+
+			<ChatBar setQuery={setQuery} />
+
 			</div>
 			
-			<ChatBar setQuery={setQuery} />
 		</main>
 		// </div>
 	);
