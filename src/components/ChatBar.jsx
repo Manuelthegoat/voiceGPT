@@ -1,8 +1,9 @@
 import Footer from "./Footer";
 
+import { useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { FiMic, FiSend } from "react-icons/fi";
-import { useState } from "react";
+import { Tooltip } from 'react-tooltip'
 
 const ChatBar = ({ setQuery }) => {
 	const [userInput, setUserInput] = useState("");
@@ -27,7 +28,8 @@ const ChatBar = ({ setQuery }) => {
 				/>
 				<div className="icon__wrapper send__icon__wrapper">
 					<FiSend onClick={submit} className="send__icon message" />
-                    <FiMic onClick={undefined} className="send__icon" />
+                    <Tooltip anchorId="mic"/>
+                    <FiMic onClick={undefined} className="send__icon" id="mic" data-tooltip-content="Coming soon"/>
 				</div>
 			</div>
 			<Footer />

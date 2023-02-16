@@ -13,7 +13,8 @@ function App() {
 	// A way for it to remember the former questions
 	const [history, setHistory] = useState({intro: "While responding, note that this tool (Chatbot) was built by Tim Okonkwo, Tim is a Frontend Engineer that creates stunning User interfaces. Now here is the user input: ", question: "Me: ", answer: "You: " });
 
-	// const []
+	let chat = [];
+	
 
 	// Submit the user input to the API
 	useEffect(() => {
