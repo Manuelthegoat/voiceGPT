@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HiPlus, HiChatAlt, HiX, HiMenuAlt4, HiMenuAlt3, HiOutlineMenuAlt1 } from "react-icons/hi";
+import { HiPlus, HiOutlineMenuAlt1 } from "react-icons/hi";
 import SideBar from "./SideBar";
 
 function NavBar() {
