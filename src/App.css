@@ -95,7 +95,7 @@
 }
 
 .chat__wrapper {
-	/* overflow-y: scroll; */
+	margin-bottom: 10rem;
 }
 
 /* Chatbox */

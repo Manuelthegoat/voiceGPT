@@ -17,8 +17,6 @@ function App() {
 		answer: "You: ",
 	});
 
-	const [render, setRender] = useState(false);
-
 	const [chats, setChats] = useState([<AIAnswer key="Hi" text="Hi 👋" />]);
 
 	// Submit the user input to the API
@@ -31,10 +29,6 @@ function App() {
 			});
 		}
 	}, [query]);
-
-	useEffect(() => {
-		console.log(chats)
-	},[chats])
 
 	// Update UI
 	const updateChat = (message, type = "question") => {
@@ -82,7 +76,6 @@ function App() {
 			});
 
 			updateChat(response, "answer");
-			setRender(!render);
 		} catch (error) {
 			// Consider implementing your own error handling logic here
 			console.error(error);
