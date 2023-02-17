@@ -25,14 +25,25 @@
 	justify-content: space-between;
 	background-color: #202123ef;
 	transition: 0.5s;
+	
+}
+
+.overlay{
+	width: 100%;
+	width: 80%;
+	background-color: rgba(0, 0, 0, 0.9);
+	background-image: url("assets/images/ai.jpg");
+	background-repeat: no-repeat;
+	background-position: center;
 }
 
 .nav__menu__wrapper {
-	width: 80%;
+	width: 100%;
 	height: 100vh;
-	background-color: #202123;
+	background-size: cover;
 	padding: 0.75rem;
-	transition: 0.5s;
+	transition: 0.5s;	
+	background-color: rgba(0, 0, 0, 0.8);
 }
 
 .show {
@@ -41,7 +52,7 @@
 
 .nav__menu {
 	display: grid;
-	gap: 1.1rem;
+	gap: 1.1rem;	
 }
 
 .icon {
@@ -106,7 +117,7 @@
 	bottom: 0;
 	width: 100%;
 	display: grid;
-	row-gap: 1rem;
+	row-gap: .7rem;
 	padding: 0.75rem;
 	background-color: #fff;
 	border-top: 2px solid var(--text-bg-color);
@@ -202,6 +213,7 @@ footer {
 	justify-content: center;
 	margin: 0.5rem;
 	font-size: 0.9rem;
+	gap: .5rem;
 }
 
 .footer__links {
@@ -266,9 +278,17 @@ footer a {
 		margin: 0 26%;
 	}
 
+
 	.sidebar__wrapper {
 		position: relative;
 	}
+
+	.overlay {
+		position: fixed;
+		width: 49.4%;
+		height: 100vh;
+	}
+	
 
 	.nav__icon__wrapper {
 		display: none;
