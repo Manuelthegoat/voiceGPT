@@ -8,6 +8,7 @@
 * {
 	box-sizing: border-box;
 	font-family: "Inter", sans-serif;
+	margin: 0;
 }
 
 .sidebar__wrapper {
@@ -71,6 +72,7 @@
 	right: 0.8rem;
 	top: 0.86rem;
 	padding: 0.1rem;
+	display: flex;
 }
 
 .close__menu {
@@ -92,6 +94,10 @@
 	display: grid;
 	padding-left: 0.75rem;
 	gap: 1.2rem;
+}
+
+.chat__wrapper {
+	margin-bottom: 10rem;
 }
 
 /* Chatbox */
@@ -122,7 +128,6 @@
 .chatbox textarea {
 	outline: none;
 	border: none;
-	height: auto;
 	width: 100%;
 	resize: none;
 }
@@ -135,7 +140,7 @@
 
 .send__icon__wrapper {
 	background: none !important;
-	transition: .5s;
+	transition: 0.5s;
 	grid-template-columns: 1fr 1fr;
 	column-gap: 0.6rem;
 }
@@ -146,7 +151,7 @@
 }
 
 .send__icon__wrapper #mic {
-	opacity: .4;
+	opacity: 0.4;
 }
 
 .message__wrapper {
@@ -231,6 +236,8 @@ footer a {
 	nav {
 		background-color: var(--nav-bg-color);
 		padding: 0.75rem 0.75rem;
+		position: fixed;
+		width: 100%;
 	}
 
 	.nav__container {
@@ -239,6 +246,11 @@ footer a {
 		align-items: center;
 		color: var(--text-bg-color);
 	}
+
+	.chat__wrapper {
+		padding-top: 50px;
+	}
+
 }
 
 @media screen and (min-width: 768px) {
@@ -267,10 +279,10 @@ footer a {
 	}
 
 	.chat__wrapper {
-		width: 73vw;
+		width: 73.9vw;
 	}
 	.chatbox__wrapper {
-		width: 73vw;
+		width: 73.9vw;
 		margin-right: 10%;
 		padding: inherit 1rem;
 	}
