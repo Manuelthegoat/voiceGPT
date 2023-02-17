@@ -44,6 +44,10 @@ function App() {
 		try {
 			const configuration = new Configuration({
 				apiKey: "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",
+				// method: "POST",
+				// headers: {
+				// 	"Content-Type": "application/json",
+				// },
 			});
 
 			const openai = new OpenAIApi(configuration);
@@ -65,6 +69,7 @@ function App() {
 
 			// Returned Text from API
 			const response = completion.data.choices[0].text;
+			console.log(response);
 
 			setHistory((prev) => {
 				return { ...prev, answer: prev.answer + `.\n ${response}` };
@@ -79,13 +84,21 @@ function App() {
 	};
 
 	return (
+		// <div className="wrapper">
 		<main>
 			<NavBar />
 
 			<div className="chat__wrapper">{chats}</div>
 
 			<ChatBar setQuery={setQuery} />
+			<div className="chat__wrapper">
+				{chats.map(chat => chat)}
+
+			<ChatBar setQuery={setQuery} />
+
+			</div>
 		</main>
+		// </div>
 	);
 }
 
