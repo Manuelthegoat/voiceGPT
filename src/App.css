@@ -278,9 +278,17 @@ footer a {
 		margin: 0 26%;
 	}
 
+
 	.sidebar__wrapper {
 		position: relative;
 	}
+
+	.overlay {
+		position: fixed;
+		width: 49.4%;
+		height: 100vh;
+	}
+	
 
 	.nav__icon__wrapper {
 		display: none;
