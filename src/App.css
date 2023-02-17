@@ -94,10 +94,6 @@
 	gap: 1.2rem;
 }
 
-.chat__wrapper {
-	margin-bottom: 10rem;
-}
-
 /* Chatbox */
 .chatbox__wrapper {
 	position: fixed;
@@ -139,7 +135,7 @@
 
 .send__icon__wrapper {
 	background: none !important;
-	transition: 0.5s;
+	transition: .5s;
 	grid-template-columns: 1fr 1fr;
 	column-gap: 0.6rem;
 }
@@ -150,7 +146,7 @@
 }
 
 .send__icon__wrapper #mic {
-	opacity: 0.4;
+	opacity: .4;
 }
 
 .message__wrapper {
@@ -235,8 +231,6 @@ footer a {
 	nav {
 		background-color: var(--nav-bg-color);
 		padding: 0.75rem 0.75rem;
-		position: fixed;
-		width: 100%;
 	}
 
 	.nav__container {
@@ -244,10 +238,6 @@ footer a {
 		justify-content: space-between;
 		align-items: center;
 		color: var(--text-bg-color);
-	}
-
-	.chat__wrapper {
-		padding-top: 50px;
 	}
 }
 
