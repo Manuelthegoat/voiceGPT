@@ -44,10 +44,6 @@ function App() {
 		try {
 			const configuration = new Configuration({
 				apiKey: "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",
-				// method: "POST",
-				// headers: {
-				// 	"Content-Type": "application/json",
-				// },
 			});
 
 			const openai = new OpenAIApi(configuration);
@@ -83,7 +79,6 @@ function App() {
 	};
 
 	return (
-		// <div className="wrapper">
 		<main>
 			<NavBar />
 
@@ -91,7 +86,6 @@ function App() {
 
 			<ChatBar setQuery={setQuery} />
 		</main>
-		// </div>
 	);
 }
 
