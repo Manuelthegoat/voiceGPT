@@ -127,7 +127,6 @@
 .chatbox textarea {
 	outline: none;
 	border: none;
-	height: auto;
 	width: 100%;
 	resize: none;
 }
