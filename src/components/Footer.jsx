@@ -10,11 +10,17 @@ const Footer = () => {
 				<a href="https://timokonkwo.com">Tim</a>
 			</p>
 
-			<div className="footer__links">
-				<GrTwitter className="icon" />
-				<GrGithub className="icon" />
-				<GrLinkedin className="icon" />
-			</div>
+			{/* <div className="footer__links">
+				<a href="https://twitter.com/timokonkwo_" target="_blank">
+					<GrTwitter className="icon" />
+				</a>
+				<a href="https//github.com/timokonkwo" target="_blank">
+					<GrGithub className="icon" />
+				</a>
+				<a href="https://linkedin.com/in/timokonkwo" target="_blank">
+					<GrLinkedin className="icon" />
+				</a>
+			</div> */}
 		</footer>
 	);
 };
