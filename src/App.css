@@ -216,6 +216,10 @@ a {
 	text-align: unset;
 }
 
+.error {
+	color: red;
+}
+
 .loading {
 	align-items: center;
 }

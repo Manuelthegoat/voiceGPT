@@ -96,7 +96,8 @@ function App() {
 		<main>
 			<NavBar />
 
-			<div className="chat__wrapper">{chats}
+			<div className="chat__wrapper">
+				{chats}
 			{loading && <AIAnswer loading={loading} text="..."/>}
 			</div>
 
