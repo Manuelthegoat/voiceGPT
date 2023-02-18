@@ -11,6 +11,10 @@
 	margin: 0;
 }
 
+a {
+	text-decoration: none;
+}
+
 .sidebar__wrapper {
 	left: -103%;
 	width: 100%;
@@ -25,10 +29,9 @@
 	justify-content: space-between;
 	background-color: #202123ef;
 	transition: 0.5s;
-	
 }
 
-.overlay{
+.overlay {
 	width: 100%;
 	width: 80%;
 	background-color: rgba(0, 0, 0, 0.9);
@@ -42,26 +45,59 @@
 	height: 100vh;
 	background-size: cover;
 	padding: 0.75rem;
-	transition: 0.5s;	
+	transition: 0.5s;
 	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.nav__menu {
+	display: grid;
+	gap: 1.1rem;
+	/* justify-content: space-between;	 */
+}
+
+.my__details {
+	position: fixed;
+	bottom: 1rem;
+	width: 24%;
+	display: grid;
+	row-gap: .4rem;
+}
+
+.my__details .new__chat {
+	padding: .5rem .7rem;
+}
+
+.contact {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.contact .icon {
+	color: #fff;
+}
+
+.contact:hover .icon{
+	/* transform: rotate(360deg); */
+	transition: .7s;
+	transform: scale(1.1);
+}
+
+.contact:hover .wh {
+	color: #0dc143;
+}
+
+.contact:hover .tw, .contact:hover .li {
+	color: #589df1;
 }
 
 .show {
 	left: 0;
 }
 
-.nav__menu {
-	display: grid;
-	gap: 1.1rem;	
-}
-
 .icon {
 	font-size: 1.5rem;
 	cursor: pointer;
-}
-
-.sidebar__wrapper {
-	width: 100vw;
 }
 
 .nav__icon__wrapper {
@@ -78,7 +114,6 @@
 }
 
 .close__icon__wrapper {
-	/* background-color: red; */
 	position: absolute;
 	right: 0.8rem;
 	top: 0.86rem;
@@ -117,7 +152,7 @@
 	bottom: 0;
 	width: 100%;
 	display: grid;
-	row-gap: .7rem;
+	row-gap: 0.7rem;
 	padding: 0.75rem;
 	background-color: #fff;
 	border-top: 2px solid var(--text-bg-color);
@@ -212,8 +247,12 @@ footer {
 	display: grid;
 	justify-content: center;
 	margin: 0.5rem;
-	font-size: 0.9rem;
-	gap: .5rem;
+	gap: 0.5rem;
+	padding: .5rem;
+}
+
+footer p {
+	font-size: 1.1rem;
 }
 
 .footer__links {
@@ -225,7 +264,7 @@ footer {
 }
 
 .footer__links .icon {
-	font-size: 1.1rem;
+	font-size: 1.19rem;
 }
 
 .footer__links .icon:last-child,
@@ -234,7 +273,6 @@ footer {
 }
 
 footer a {
-	text-decoration: none;
 	/* color:var(--nav-bg-color); */
 	font-weight: bold;
 }
@@ -259,10 +297,13 @@ footer a {
 		color: var(--text-bg-color);
 	}
 
+	.my__details {
+		width: 73%;
+	}
+
 	.chat__wrapper {
 		padding-top: 50px;
 	}
-
 }
 
 @media screen and (min-width: 768px) {
@@ -278,7 +319,6 @@ footer a {
 		margin: 0 26%;
 	}
 
-
 	.sidebar__wrapper {
 		position: relative;
 	}
@@ -288,7 +328,6 @@ footer a {
 		width: 49.4%;
 		height: 100vh;
 	}
-	
 
 	.nav__icon__wrapper {
 		display: none;
