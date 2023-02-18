@@ -6,6 +6,7 @@ const TypeEffect = ({ text, setDoneTyping }) => {
 			onInit={(typewriter) => {
 				typewriter
 					.start()
+                    .changeDelay(1)
 					.typeString(text)
 					.pauseFor(500)
 					.callFunction(() => {
