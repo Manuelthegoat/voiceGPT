@@ -215,6 +215,14 @@ a {
 	text-align: unset;
 }
 
+.loading {
+	align-items: center;
+}
+
+.loader {
+	width: 70px;
+}
+
 .icon__wrapper {
 	border-radius: 0.3rem;
 	background-color: lightgray;
@@ -232,6 +240,7 @@ a {
 
 .ai {
 	background-color: #f7f7f8;
+	display: flex;
 }
 
 .ai .icon__wrapper {

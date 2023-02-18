@@ -5,6 +5,7 @@ import ChatBar from "./components/ChatBar";
 import SentMessage from "./components/SentMessage";
 import AIAnswer from "./components/AIAnswer";
 import { Configuration, OpenAIApi } from "openai";
+import {nanoid} from "nanoid"
 
 function App() {
 	const [query, setQuery] = useState("");
@@ -18,13 +19,14 @@ function App() {
 
 	const [chats, setChats] = useState([<AIAnswer key="global@tim@softamplify" text="Hi 👋" />]);
 
+	const [loading, setLoading] = useState(false)
+
 	// Submit the user input to the API
 	useEffect(() => {
 		if (query.length > 0) {
-			handleSubmit(query);
 			updateChat(query, "question");
-			updateChat("...");
-
+			handleSubmit(query);
+			setLoading(true)
 			setHistory((prev) => {
 				return { ...prev, question: prev.question + `\n ${query}` };
 			});
@@ -33,22 +35,16 @@ function App() {
 
 	// Update UI
 	const updateChat = (message, type) => {
-		const id = message.slice[3]
 		if (type === "question") {
 			setChats((oldChat) => [
 				...oldChat,
-				<SentMessage key={id} text={message} />,
+				<SentMessage key={nanoid()} text={message} />,
 			]);
 		} else if (type === "answer") {
-			chats.map(item => console.log(item))
+			chats.filter(item => (item.props.text === "..."))
 			setChats((oldChat) => [
 				...oldChat,
-				<AIAnswer key={id} text={message} />,
-			]);
-		} else {
-			setChats((oldChat) => [
-				...oldChat,
-				<AIAnswer key={id} text={message} />,
+				<AIAnswer key={nanoid()}text={message} />,
 			]);
 		}
 	};
@@ -78,14 +74,16 @@ function App() {
 			});
 
 			// Returned Text from API
+
 			const response = completion.data.choices[0].text;
-			console.log(response);
 
 			setHistory((prev) => {
 				return { ...prev, answer: prev.answer + `.\n ${response}` };
 			});
 
 			updateChat(response, "answer");
+			setLoading(false)
+			
 		} catch (error) {
 			// Consider implementing your own error handling logic here
 			console.error(error);
@@ -98,7 +96,9 @@ function App() {
 		<main>
 			<NavBar />
 
-			<div className="chat__wrapper">{chats}</div>
+			<div className="chat__wrapper">{chats}
+			{loading && <AIAnswer loading={loading} text="..."/>}
+			</div>
 
 			<ChatBar setQuery={setQuery} />
 		</main>
