@@ -16,13 +16,15 @@ function App() {
 		answer: "You: ",
 	});
 
-	const [chats, setChats] = useState([<AIAnswer key="Hi" text="Hi 👋" />]);
+	const [chats, setChats] = useState([<AIAnswer key="global@tim@softamplify" text="Hi 👋" />]);
 
 	// Submit the user input to the API
 	useEffect(() => {
 		if (query.length > 0) {
 			handleSubmit(query);
 			updateChat(query, "question");
+			updateChat("...");
+
 			setHistory((prev) => {
 				return { ...prev, question: prev.question + `\n ${query}` };
 			});
@@ -30,15 +32,28 @@ function App() {
 	}, [query]);
 
 	// Update UI
-	const updateChat = (message, type = "question") => {
+	const updateChat = (message, type) => {
+		const id = message.slice[3]
 		if (type === "question") {
-			setChats(oldChat => [...oldChat, <SentMessage key={message.slice[3]} text={message} />]);
+			setChats((oldChat) => [
+				...oldChat,
+				<SentMessage key={id} text={message} />,
+			]);
+		} else if (type === "answer") {
+			chats.map(item => console.log(item))
+			setChats((oldChat) => [
+				...oldChat,
+				<AIAnswer key={id} text={message} />,
+			]);
 		} else {
-			setChats(oldChat => [...oldChat, <AIAnswer key={message.slice[3]} text={message} />]);
+			setChats((oldChat) => [
+				...oldChat,
+				<AIAnswer key={id} text={message} />,
+			]);
 		}
 	};
 
-	// Submit the user Input
+	// Submit the user Input and call the API
 	const handleSubmit = async (inputQuery) => {
 		try {
 			const configuration = new Configuration({
@@ -83,12 +98,9 @@ function App() {
 		<main>
 			<NavBar />
 
-			<div className="chat__wrapper">{chats}
-			
-			</div>
+			<div className="chat__wrapper">{chats}</div>
 
 			<ChatBar setQuery={setQuery} />
-			
 		</main>
 		// </div>
 	);

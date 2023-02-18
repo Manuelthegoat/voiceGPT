@@ -18,6 +18,12 @@ const SideBar = ({ menu, handleMenu }) => {
 							<HiChatAlt /> Write a code?
 						</div>
 					</div>
+
+					<div className="my__details">
+						<div className="new__chat">
+							hi
+						</div>
+					</div>
 				</div>
 			</div>
 			</div>

@@ -46,27 +46,34 @@
 	background-color: rgba(0, 0, 0, 0.8);
 }
 
+
+.nav__menu {
+	display: grid;
+	gap: 1.1rem;
+	/* justify-content: space-between;	 */
+}
+
+.my__details {
+	position:fixed;
+	bottom: 1rem;
+	width: 24%;
+}
+
 .show {
 	left: 0;
 }
 
-.nav__menu {
-	display: grid;
-	gap: 1.1rem;	
-}
 
 .icon {
 	font-size: 1.5rem;
 	cursor: pointer;
 }
 
-.sidebar__wrapper {
-	width: 100vw;
-}
 
 .nav__icon__wrapper {
 	padding: 0.2rem;
 }
+
 
 .menu__icon {
 	font-size: 1.9rem;
@@ -78,7 +85,6 @@
 }
 
 .close__icon__wrapper {
-	/* background-color: red; */
 	position: absolute;
 	right: 0.8rem;
 	top: 0.86rem;
@@ -106,6 +112,7 @@
 	padding-left: 0.75rem;
 	gap: 1.2rem;
 }
+
 
 .chat__wrapper {
 	margin-bottom: 10rem;
@@ -257,6 +264,10 @@ footer a {
 		justify-content: space-between;
 		align-items: center;
 		color: var(--text-bg-color);
+	}
+
+	.my__details {
+		width: 73%;
 	}
 
 	.chat__wrapper {
