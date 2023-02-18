@@ -176,6 +176,7 @@ a {
 	border: none;
 	width: 100%;
 	resize: none;
+	font-size: 1.1rem;
 }
 
 .send__icon {
@@ -215,6 +216,14 @@ a {
 	text-align: unset;
 }
 
+.loading {
+	align-items: center;
+}
+
+.loader {
+	width: 70px;
+}
+
 .icon__wrapper {
 	border-radius: 0.3rem;
 	background-color: lightgray;
@@ -232,6 +241,7 @@ a {
 
 .ai {
 	background-color: #f7f7f8;
+	display: flex;
 }
 
 .ai .icon__wrapper {
@@ -249,10 +259,6 @@ footer {
 	margin: 0.5rem;
 	gap: 0.5rem;
 	padding: .5rem;
-}
-
-footer p {
-	font-size: 1.1rem;
 }
 
 .footer__links {
