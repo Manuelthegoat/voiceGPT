@@ -5,7 +5,7 @@ import ChatBar from "./components/ChatBar";
 import SentMessage from "./components/SentMessage";
 import AIAnswer from "./components/AIAnswer";
 import { Configuration, OpenAIApi } from "openai";
-import {nanoid} from "nanoid"
+import { nanoid } from "nanoid";
 
 function App() {
 	const [query, setQuery] = useState("");
@@ -17,16 +17,18 @@ function App() {
 		answer: "You: ",
 	});
 
-	const [chats, setChats] = useState([<AIAnswer key="global@tim@softamplify" text="Hi 👋" />]);
+	const [chats, setChats] = useState([
+		<AIAnswer key="global@tim@softamplify" text="Hi 👋" />,
+	]);
 
-	const [loading, setLoading] = useState(false)
+	const [loading, setLoading] = useState(false);
 
 	// Submit the user input to the API
 	useEffect(() => {
 		if (query.length > 0) {
 			updateChat(query, "question");
 			handleSubmit(query);
-			setLoading(true)
+			setLoading(true);
 			setHistory((prev) => {
 				return { ...prev, question: prev.question + `\n ${query}` };
 			});
@@ -41,10 +43,18 @@ function App() {
 				<SentMessage key={nanoid()} text={message} />,
 			]);
 		} else if (type === "answer") {
-			chats.filter(item => (item.props.text === "..."))
 			setChats((oldChat) => [
 				...oldChat,
-				<AIAnswer key={nanoid()}text={message} />,
+				<AIAnswer key={nanoid()} text={message} />,
+			]);
+		} else if (type === "error") {
+			setChats((oldChat) => [
+				...oldChat,
+				<AIAnswer
+					key={nanoid()}
+					error={true}
+					text={message + ". Please try again"}
+				/>,
 			]);
 		}
 	};
@@ -77,17 +87,25 @@ function App() {
 
 			const response = completion.data.choices[0].text;
 
+			// Validate response
+			// if (response <= 2) {
+			// 	updateChat("what do you mean?", "answer");
+			// 	setLoading(false);
+
+			// 	return;
+			// }
+
 			setHistory((prev) => {
 				return { ...prev, answer: prev.answer + `.\n ${response}` };
 			});
 
 			updateChat(response, "answer");
-			setLoading(false)
-			
+			setLoading(false);
 		} catch (error) {
 			// Consider implementing your own error handling logic here
-			console.error(error);
-			alert(error.message);
+			setLoading(false);
+			updateChat(error.message, "error");
+			// alert(error.message);
 		}
 	};
 
@@ -98,7 +116,7 @@ function App() {
 
 			<div className="chat__wrapper">
 				{chats}
-			{loading && <AIAnswer loading={loading} text="..."/>}
+				{loading && <AIAnswer loading={loading} text="..." />}
 			</div>
 
 			<ChatBar setQuery={setQuery} />
