@@ -1,18 +1,10 @@
-import Typewriter from "typewriter-effect";
+
+import Typewriter from 'react-ts-typewriter';
 
 const TypeEffect = ({ text, setDoneTyping }) => {
 	return (
 		<Typewriter
-			onInit={(typewriter) => {
-				typewriter
-					.start()
-                    .changeDelay(1)
-					.typeString(text)
-					.pauseFor(500)
-					.callFunction(() => {
-						setDoneTyping(true);
-					});
-			}}
+			text={text}
 		/>
 	);
 };
