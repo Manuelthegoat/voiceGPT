@@ -5,7 +5,7 @@ import TypeEffect from "./TypeEffect";
 import { RxSpeakerLoud, RxSpeakerOff } from "react-icons/rx";
 import { useEffect } from "react";
 
-const AIAnswer = ({ text, loading }) => {
+const AIAnswer = ({ text, loading, error }) => {
 	const [doneTyping, setDoneTyping] = useState(false);
 
 	const [speak, setSpeak] = useState(false);
@@ -17,6 +17,8 @@ const AIAnswer = ({ text, loading }) => {
 		speak ? window.speechSynthesis.speak(msg) : " ";
 	}, [speak]);
 
+
+
 	const classname = "message__wrapper ai";
 
 	return (
@@ -26,16 +28,16 @@ const AIAnswer = ({ text, loading }) => {
 			</div>
 			{loading ? (
 				<img src={dots} className="loader" />
-			) : !text.length > 0 ? (
-				<p className="error">An error occured. Please reload</p>
+			) : !text.length > 4 ? (
+				<p className="error">An error occured. Please try again</p>
 			) : doneTyping ? (
-				<p dangerouslySetInnerHTML={{__html:text}}/>
+				<p className={error ? "error" : ""} dangerouslySetInnerHTML={{__html:text}}/>
 			) : (
 				<TypeEffect text={text} setDoneTyping={setDoneTyping} />
 			)}
 
 			<div>
-				{speak ? (
+				{!error ? speak ? (
 					<RxSpeakerLoud
 						className="voice__icon"
 						onClick={() => setSpeak(!speak)}
@@ -45,7 +47,7 @@ const AIAnswer = ({ text, loading }) => {
 						className="voice__icon"
 						onClick={() => setSpeak(!speak)}
 					/>
-				)}
+				) : ""} 
 			</div>
 		</div>
 	);
