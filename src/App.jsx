@@ -12,7 +12,7 @@ function App() {
 
 	// A way for it to remember the former questions
 	const [history, setHistory] = useState({
-		intro: "While responding, note that this tool (Chatbot) was built by Tim Okonkwo. Tim is a software Engineer. This bot helps users answer any type of question thay might have. Now here is the user input: ",
+		intro: "While responding, note that this artificial intelligence was built by Tim Okonkwo. Tim is a software Engineer. This AI helps users answer any type of question users might have. This AI can generate codes and many more.  Now here is the user input: ",
 		question: "Me: ",
 		answer: "You: ",
 	});
@@ -27,7 +27,7 @@ function App() {
 	useEffect(() => {
 		if (query.length > 0) {
 			updateChat(query, "question");
-			handleSubmit(query);
+			handleSubmit(query.toLocaleLowerCase());
 			setLoading(true);
 			setHistory((prev) => {
 				return { ...prev, question: prev.question + `\n ${query}` };
@@ -75,12 +75,12 @@ function App() {
 					history.question +
 					history.answer +
 					inputQuery,
-				temperature: 0,
-				top_p: 0.7,
-				max_tokens: 2040,
+				temperature: 0.2,
+				top_p: 1,
+				max_tokens: 3890,
 				presence_penalty: 0,
 				frequency_penalty: 0.5,
-				n: 1,
+				// n: 1,
 			});
 
 			// Returned Text from API

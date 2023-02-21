@@ -16,7 +16,7 @@
     "react-icons": "^4.7.1",
     "react-textarea-autosize": "^8.4.0",
     "react-tooltip": "^5.7.5",
-    "typewriter-effect": "^2.19.0"
+    "react-ts-typewriter": "^0.1.8-b"
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
