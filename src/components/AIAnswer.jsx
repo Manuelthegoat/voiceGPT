@@ -1,7 +1,6 @@
 import { GrRobot } from "react-icons/gr";
 import dots from "../assets/images/dots.gif";
 import { useState } from "react";
-import TypeEffect from "./TypeEffect";
 import { RxSpeakerLoud, RxSpeakerOff } from "react-icons/rx";
 import { useEffect } from "react";
 import useInterval from "./useInterval";
@@ -11,7 +10,7 @@ const AIAnswer = ({ text, loading, error }) => {
 
 	const [speak, setSpeak] = useState(false);
 
-	const [type, setType] = useState(" ");
+	const [type, setType] = useState("");
 
 	const [count, setCount] = useState(0);
 
@@ -19,7 +18,7 @@ const AIAnswer = ({ text, loading, error }) => {
 	msg.text = text;
 
 	useEffect(() => {
-		speak ? window.speechSynthesis.speak(msg) : " ";
+		speak ? window.speechSynthesis.speak(msg) : "";
 	}, [speak]);
 
 	// Implement typing effect
@@ -38,7 +37,6 @@ const AIAnswer = ({ text, loading, error }) => {
 
 	const handleSpeak = () => {
 		setSpeak(!speak);
-		console.log(window.speechSynthesis.pending);
 	};
 	// };
 
@@ -54,7 +52,7 @@ const AIAnswer = ({ text, loading, error }) => {
 			) : !text.length > 4 ? (
 				<p className="error">An error occured. Please try again</p>
 			) : (
-				<div className="message">{type}</div>
+				<div className="message">{text.trim()}</div>
 			)}
 
 			<div>
