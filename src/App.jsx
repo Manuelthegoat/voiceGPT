@@ -75,12 +75,12 @@ function App() {
 					history.question +
 					history.answer +
 					inputQuery,
-				temperature: 0,
-				top_p: 0.7,
-				max_tokens: 400,
+				temperature: 0.2,
+				top_p: 1,
+				max_tokens: 3890,
 				presence_penalty: 0,
 				frequency_penalty: 0.5,
-				n: 1,
+				// n: 1,
 			});
 
 			// Returned Text from API

@@ -49,10 +49,11 @@ const AIAnswer = ({ text, loading, error }) => {
 			</div>
 			{loading ? (
 				<img src={dots} className="loader" />
-			) : !text.length > 4 ? (
-				<p className="error">An error occured. Please try again</p>
+			) : text.length < 4 ? (
+				<p className="error">An error occured. Please try again {console.log(text)}</p>
+				
 			) : (
-				<div className="message">{text.trim()}</div>
+				<div className="message">{type.trim()}</div>
 			)}
 
 			<div>
