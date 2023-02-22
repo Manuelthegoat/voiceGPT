@@ -22,34 +22,31 @@ const SideBar = ({ menu, handleMenu }) => {
 						</div>
 
 						<div className="my__details">
-							<div className="new__chat contact">
-								<a
-									href="https://twitter.com/timokonkwo_"
-									target="_blank"
-								>
-									<BsTwitter className="icon tw" />
-								</a>
+							<a
+								className="new__chat contact"
+								href="https://twitter.com/timokonkwo_"
+								target="_blank"
+							>
+								<BsTwitter className="icon tw" />
 								Let's Connect
-							</div>
+							</a>
 
-							<div className="new__chat contact">
-								<a
-									href="https://wa.me/+2347034668957"
-									target="_blank"
-								>
-									<BsWhatsapp className="icon wh" />
-								</a> 
+							<a
+								className="new__chat contact"
+								href="https://wa.me/+2347034668957"
+								target="_blank"
+							>
+								<BsWhatsapp className="icon wh" />
 								Let's Chat
-							</div>
-							<div className="new__chat contact">
-								<a
-									href="https://linkedin.com/in/timokonkwo"
-									target="_blank"
-								>
-									<BsLinkedin className="icon li" />
-								</a>
+							</a>
+							<a
+								className="new__chat contact"
+								href="https://linkedin.com/in/timokonkwo"
+								target="_blank"
+							>
+								<BsLinkedin className="icon li" />
 								Meet
-							</div>
+							</a>
 						</div>
 					</div>
 				</div>
