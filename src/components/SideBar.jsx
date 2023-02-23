@@ -1,6 +1,8 @@
 import { HiPlus, HiChatAlt, HiX } from "react-icons/hi";
+import {FiHelpCircle} from "react-icons/fi"
 
-import { BsLinkedin, BsTwitter, BsWhatsapp } from "react-icons/bs";
+import { BsLinkedin, BsTwitter, BsWhatsapp, BsInfoCircle } from "react-icons/bs";
+
 
 const SideBar = ({ menu, handleMenu }) => {
 	return (
@@ -9,15 +11,20 @@ const SideBar = ({ menu, handleMenu }) => {
 				<div className="nav__menu__wrapper">
 					<div className="nav__menu">
 						<div className="new__chat">
-							<HiPlus /> New chat
+							<FiHelpCircle className="icon"/> Help
 						</div>
 						<div className="chat__history">
 							<div className="history">
-								<HiChatAlt /> What is your name?
+								<BsInfoCircle className="icon" />
+								Click on the Generated answer to copy it.
 							</div>
 
 							<div className="history">
-								<HiChatAlt /> Write a code?
+								<BsInfoCircle className="icon" />
+								<p>
+									Refresh the page if you encounter
+									difficulties in generating answers.
+								</p>
 							</div>
 						</div>
 
