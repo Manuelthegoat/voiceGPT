@@ -16,7 +16,7 @@ const SideBar = ({ menu, handleMenu }) => {
 						<div className="chat__history">
 							<div className="history">
 								<BsInfoCircle className="icon" />
-								Click on the Generated answer to copy it.
+								Tap on the Generated answer to copy it.
 							</div>
 
 							<div className="history">
