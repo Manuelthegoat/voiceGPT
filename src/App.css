@@ -161,6 +161,10 @@ a {
 	margin-bottom: 10rem;
 }
 
+.voice__icon, .message {
+	cursor: pointer;
+}
+
 /* Chatbox */
 .chatbox__wrapper {
 	position: fixed;
@@ -230,8 +234,9 @@ a {
 	word-spacing: 2.2px;
 	text-align: unset;
 	white-space: pre-line;
-	/* margin-top: -2.3rem; */
 }
+
+
 
 .voice__icon {
 	position: absolute;

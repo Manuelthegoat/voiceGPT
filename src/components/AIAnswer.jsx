@@ -5,6 +5,9 @@ import { RxSpeakerLoud, RxSpeakerOff } from "react-icons/rx";
 import { useEffect } from "react";
 import useInterval from "./useInterval";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const AIAnswer = ({ text, loading, error }) => {
 	const [doneTyping, setDoneTyping] = useState(false);
 
@@ -30,7 +33,6 @@ const AIAnswer = ({ text, loading, error }) => {
 			} else {
 				setDoneTyping(true);
 			}
-
 		},
 		doneTyping ? null : 20
 	);
@@ -38,12 +40,22 @@ const AIAnswer = ({ text, loading, error }) => {
 	const handleSpeak = () => {
 		setSpeak(!speak);
 	};
-	
 
 	// Implement copy to clip board on clicking the messsage
-	const copyText = async type => {
+	const copyText = async (type) => {
+		// Toast copied successfully
+		toast.success("Copied text to Clipboard", {
+			position: "bottom-center",
+			autoClose: 1000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+		});
 		return await navigator.clipboard.writeText(type);
-	}
+	};
 
 	const classname = "message__wrapper ai";
 
@@ -55,10 +67,16 @@ const AIAnswer = ({ text, loading, error }) => {
 			{loading ? (
 				<img src={dots} className="loader" />
 			) : text.length < 4 ? (
-				<p className="error">An error occured. Please try again {console.log(text)}</p>
-				
+				<p className="error">
+					An error occured. Please try again {console.log(text)}
+				</p>
 			) : (
-				<div className="message" onClick={() => copyText(text)}>{type.trim()}</div>
+				<>
+					<div className="message" onClick={() => copyText(text)}>
+						{type.trim()}
+						<ToastContainer limit={2}/>
+					</div>
+				</>
 			)}
 
 			<div>
