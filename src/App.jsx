@@ -18,7 +18,7 @@ function App() {
 	});
 
 	const [chats, setChats] = useState([
-		<AIAnswer key="global@tim@softamplify" text="Hi 👋" />,
+		<AIAnswer key="global relevance" text="Hi 👋" />,
 	]);
 
 	const [loading, setLoading] = useState(false);

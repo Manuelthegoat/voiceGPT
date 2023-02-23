@@ -38,7 +38,12 @@ const AIAnswer = ({ text, loading, error }) => {
 	const handleSpeak = () => {
 		setSpeak(!speak);
 	};
-	// };
+	
+
+	// Implement copy to clip board on clicking the messsage
+	const copyText = async type => {
+		return await navigator.clipboard.writeText(type);
+	}
 
 	const classname = "message__wrapper ai";
 
@@ -53,7 +58,7 @@ const AIAnswer = ({ text, loading, error }) => {
 				<p className="error">An error occured. Please try again {console.log(text)}</p>
 				
 			) : (
-				<div className="message">{type.trim()}</div>
+				<div className="message" onClick={() => copyText(text)}>{type.trim()}</div>
 			)}
 
 			<div>
