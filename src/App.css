@@ -236,6 +236,10 @@ a {
 	white-space: pre-line;
 }
 
+.copyDiv {
+	position: relative;
+}
+
 
 
 .voice__icon {

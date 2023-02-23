@@ -60,7 +60,7 @@ const AIAnswer = ({ text, loading, error }) => {
 	const classname = "message__wrapper ai";
 
 	return (
-		<div className={loading ? classname + " loading" : classname}>
+		<div className={loading ? classname + " loading" : classname} >
 			<div className="icon__wrapper">
 				<GrRobot className="ai__icon" />
 			</div>
@@ -72,8 +72,8 @@ const AIAnswer = ({ text, loading, error }) => {
 				</p>
 			) : (
 				<>
-					<div className="message" onClick={() => copyText(text)}>
-						{type.trim()}
+					<div className="copyDiv" onClick={() => copyText(text)}>
+						<p className="message">{type.trim()}</p>
 						<ToastContainer limit={2}/>
 					</div>
 				</>
