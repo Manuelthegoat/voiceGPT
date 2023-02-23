@@ -73,7 +73,7 @@ const AIAnswer = ({ text, loading, error }) => {
 			) : (
 				<>
 					<div className="message" onClick={() => copyText(text)}>
-						{type.trim()}
+						<p>{type.trim()}</p>
 						<ToastContainer limit={2}/>
 					</div>
 				</>
