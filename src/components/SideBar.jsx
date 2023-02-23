@@ -1,7 +1,7 @@
-import { HiPlus, HiChatAlt, HiX } from "react-icons/hi";
+import {HiX } from "react-icons/hi";
 import {FiHelpCircle} from "react-icons/fi"
-
 import { BsLinkedin, BsTwitter, BsWhatsapp, BsInfoCircle } from "react-icons/bs";
+
 
 
 const SideBar = ({ menu, handleMenu }) => {
