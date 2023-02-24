@@ -19,9 +19,20 @@ const AIAnswer = ({ text, loading, error }) => {
 
 	const msg = new SpeechSynthesisUtterance();
 	msg.text = text;
+	// const synth = 
 
 	useEffect(() => {
-		speak ? window.speechSynthesis.speak(msg) : "";
+
+		if (speechSynthesis.speaking === true){
+			speechSynthesis.cancel()
+			speak ? speechSynthesis.speak(msg) : ""
+			if (speak) console.log("started")
+		}
+		else {
+			speak ? speechSynthesis.speak(msg) : ""
+			if (speak) console.log("started")
+		}
+
 	}, [speak]);
 
 	// Implement typing effect
@@ -37,6 +48,7 @@ const AIAnswer = ({ text, loading, error }) => {
 		doneTyping ? null : 20
 	);
 
+	// Handle the clicks on Speaker icon
 	const handleSpeak = () => {
 		setSpeak(!speak);
 	};
@@ -68,7 +80,8 @@ const AIAnswer = ({ text, loading, error }) => {
 				<img src={dots} className="loader" />
 			) : text.length < 4 ? (
 				<p className="error">
-					An error occured. Please try again {console.log(text)}
+					{error = true}
+					An error occured. Please try again.
 				</p>
 			) : (
 				<>
@@ -84,12 +97,12 @@ const AIAnswer = ({ text, loading, error }) => {
 					speak ? (
 						<RxSpeakerLoud
 							className="voice__icon"
-							onClick={handleSpeak}
+							onClick={() => setSpeak(false)}
 						/>
 					) : (
 						<RxSpeakerOff
 							className="voice__icon"
-							onClick={handleSpeak}
+							onClick={() => setSpeak(true)}
 						/>
 					)
 				) : (
