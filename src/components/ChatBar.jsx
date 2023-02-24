@@ -23,6 +23,7 @@ const ChatBar = ({ setQuery }) => {
 		transcript,
 		resetTranscript,
 		listening,
+		isMicrophoneAvailable,
 		browserSupportsSpeechRecognition,
 	} = useSpeechRecognition();
 
@@ -44,21 +45,32 @@ const ChatBar = ({ setQuery }) => {
 		setUserInput(e.target.value);
 	};
 
+
+	// Toast
+	const errorInfo = (text) => {
+		return toast.error(text, {
+			position: "bottom-center",
+			autoClose: 1000,
+			hideProgressBar: false,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "light",
+		});
+	}
+
 	const handleMicrophone = (action) => {
 		if (!browserSupportsSpeechRecognition) {
-			toast.error("Your browser does not support this feature.", {
-				position: "bottom-center",
-				autoClose: 1000,
-				hideProgressBar: false,
-				closeOnClick: true,
-				pauseOnHover: true,
-				draggable: true,
-				progress: undefined,
-				theme: "light",
-			});
+			errorInfo("Your browser does not support this feature.");
 			setListen(false);
 			return;
 		}
+
+		if (!isMicrophoneAvailable) {
+			errorInfo("Please enable microphone");
+			return
+		  }
 
 		if (action === "start") {
 			console.log("listening");
@@ -67,7 +79,7 @@ const ChatBar = ({ setQuery }) => {
 		} else {
 			console.log("end");
 			resetTranscript();
-			SpeechRecognition.stopListening();
+			SpeechRecognition.abortListening();
 			setListen(false);
 		}
 	};
