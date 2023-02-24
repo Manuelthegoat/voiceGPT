@@ -216,8 +216,9 @@ a {
 	transition: 0.3s;
 }
 
-.send__icon__wrapper #mic {
-	opacity: 0.4;
+.chatbox .stop__recording {
+	color: red;
+	/* transform: translateY(-2rem); */
 }
 
 .message__wrapper {

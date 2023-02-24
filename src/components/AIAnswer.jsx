@@ -28,7 +28,6 @@ const AIAnswer = ({ text, loading, error }) => {
 		}
 		else {
 			speak ? speechSynthesis.speak(msg) : ""
-			if (speak) console.log("started")
 		}
 
 	}, [speak]);
