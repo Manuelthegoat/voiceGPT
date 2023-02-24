@@ -59,10 +59,10 @@ const ChatBar = ({ setQuery }) => {
 				/>
 				<div className="icon__wrapper send__icon__wrapper">
 					<FiSend onClick={submit} className="send__icon message" />
-					{speaking ? <FaStopCircle className="send__icon stop__recording" onMouseUp={() => handleMicrophone("stop")}/> : <FiMic
+					{speaking ? <FaStopCircle className="send__icon stop__recording" onClick={() => handleMicrophone("stop")}/> : <FiMic
 						// onTouchStart={() => handleMicrophone("start")}
 						// onTouchEnd={() => handleMicrophone("stop")}
-						onMouseDown={() => handleMicrophone("start")}
+						onClick={() => handleMicrophone("start")}
 						className="send__icon"
 						id="mic"
 					/>}
