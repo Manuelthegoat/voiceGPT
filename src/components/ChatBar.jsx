@@ -25,7 +25,10 @@ const ChatBar = ({ setQuery }) => {
 	const [speaking, setSpeaking] = useState(false);
 
 	useEffect(() => {
-		setUserInput(prev => prev + " " + transcript);
+		setUserInput(prev => {
+			console.log(prev);
+			return prev + " " + transcript
+		});
 	}, [transcript])
 
 	const submit = () => {
@@ -44,9 +47,9 @@ const ChatBar = ({ setQuery }) => {
 			console.log("listening");
 			SpeechRecognition.startListening({ continuous: true });
 			setSpeaking(true);
-			setUserInput()
 		} else {
 			console.log("end");
+			resetTranscript();
 			SpeechRecognition.stopListening();
 			setSpeaking(false);
 		}
