@@ -1,9 +1,9 @@
 import Footer from "./Footer";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
-import { FiMic, FiSend} from "react-icons/fi";
-import {FaStopCircle} from "react-icons/fa"
+import { FiMic, FiSend } from "react-icons/fi";
+import { FaStopCircle } from "react-icons/fa";
 
 // Speech recognition
 import regeneratorRuntime from "regenerator-runtime"; // Not sure why this is but errors occur without it
@@ -18,11 +18,19 @@ const speechly = createSpeechlySpeechRecognition(appId);
 SpeechRecognition.applyPolyfill(speechly);
 
 const ChatBar = ({ setQuery }) => {
+	const { transcript, resetTranscript, listening, browserSupportsSpeechRecognition } =
+		useSpeechRecognition();
+
 	const [userInput, setUserInput] = useState("");
 	const [speaking, setSpeaking] = useState(false);
 
+	useEffect(() => {
+		setUserInput(prev => prev + " " + transcript);
+	}, [transcript])
+
 	const submit = () => {
 		setQuery(userInput);
+		resetTranscript()
 		setUserInput("");
 	};
 
@@ -32,41 +40,43 @@ const ChatBar = ({ setQuery }) => {
 	};
 
 	const handleMicrophone = (action) => {
-		if (action === "start"){
-			console.log("listening")
-			SpeechRecognition.startListening({continuous:true}) 
+		if (action === "start") {
+			console.log("listening");
+			SpeechRecognition.startListening({ continuous: true });
 			setSpeaking(true);
+			setUserInput()
 		} else {
-			console.log("end")
+			console.log("end");
 			SpeechRecognition.stopListening();
 			setSpeaking(false);
 		}
-	}
+	};
 
 	// Speech to text implementation
-
-	const { transcript, listening, browserSupportsSpeechRecognition } =
-		useSpeechRecognition();
 
 	return (
 		<div className="chatbox__wrapper">
 			<div className="chatbox">
 				<TextareaAutosize
 					maxRows={6}
-					value={transcript} // userInput
+					value={userInput} // userInput
 					onChange={handleInput}
 					autoFocus={true}
 				/>
 				<div className="icon__wrapper send__icon__wrapper">
 					<FiSend onClick={submit} className="send__icon message" />
-					{speaking ? <FaStopCircle className="send__icon stop__recording" onClick={() => handleMicrophone("stop")}/> : <FiMic
-						// onTouchStart={() => handleMicrophone("start")}
-						// onTouchEnd={() => handleMicrophone("stop")}
-						onClick={() => handleMicrophone("start")}
-						className="send__icon"
-						id="mic"
-					/>}
-					
+					{speaking ? (
+						<FaStopCircle
+							className="send__icon stop__recording"
+							onClick={() => handleMicrophone("stop")}
+						/>
+					) : (
+						<FiMic
+							onClick={() => handleMicrophone("start")}
+							className="send__icon"
+							id="mic"
+						/>
+					)}
 				</div>
 			</div>
 			<Footer />
