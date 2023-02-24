@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import { FiMic, FiSend } from "react-icons/fi";
 import { FaStopCircle } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
 
 // Speech recognition
 import regeneratorRuntime from "regenerator-runtime"; // Not sure why this is but errors occur without it
@@ -44,6 +45,21 @@ const ChatBar = ({ setQuery }) => {
 	};
 
 	const handleMicrophone = (action) => {
+		if (!browserSupportsSpeechRecognition) {
+			toast.error("Your browser does not support this feature.", {
+				position: "bottom-center",
+				autoClose: 1000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "light",
+			});
+			setListen(false);
+			return;
+		}
+
 		if (action === "start") {
 			console.log("listening");
 			SpeechRecognition.startListening({ continuous: true });
@@ -81,6 +97,8 @@ const ChatBar = ({ setQuery }) => {
 							id="mic"
 						/>
 					)}
+
+					<ToastContainer limit={2} />
 				</div>
 			</div>
 			<Footer />
