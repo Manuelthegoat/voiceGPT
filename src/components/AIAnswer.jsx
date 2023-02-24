@@ -28,7 +28,6 @@ const AIAnswer = ({ text, loading, error }) => {
 		}
 		else {
 			speak ? speechSynthesis.speak(msg) : ""
-			if (speak) console.log("started")
 		}
 
 	}, [speak]);
@@ -45,11 +44,6 @@ const AIAnswer = ({ text, loading, error }) => {
 		},
 		doneTyping ? null : 20
 	);
-
-	// Handle the clicks on Speaker icon
-	const handleSpeak = () => {
-		setSpeak(!speak);
-	};
 
 	// Implement copy to clip board on clicking the messsage
 	const copyText = async (type) => {
