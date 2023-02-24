@@ -19,14 +19,12 @@ const AIAnswer = ({ text, loading, error }) => {
 
 	const msg = new SpeechSynthesisUtterance();
 	msg.text = text;
-	// const synth = 
 
 	useEffect(() => {
-
+		// Cancel the speech running so as to take a new one
 		if (speechSynthesis.speaking === true){
 			speechSynthesis.cancel()
 			speak ? speechSynthesis.speak(msg) : ""
-			if (speak) console.log("started")
 		}
 		else {
 			speak ? speechSynthesis.speak(msg) : ""
@@ -69,6 +67,7 @@ const AIAnswer = ({ text, loading, error }) => {
 		return await navigator.clipboard.writeText(type);
 	};
 
+	// Dynmaic class name
 	const classname = "message__wrapper ai";
 
 	return (
