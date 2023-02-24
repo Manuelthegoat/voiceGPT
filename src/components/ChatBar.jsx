@@ -18,22 +18,25 @@ const speechly = createSpeechlySpeechRecognition(appId);
 SpeechRecognition.applyPolyfill(speechly);
 
 const ChatBar = ({ setQuery }) => {
-	const { transcript, resetTranscript, listening, browserSupportsSpeechRecognition } =
-		useSpeechRecognition();
+	const {
+		transcript,
+		resetTranscript,
+		listening,
+		browserSupportsSpeechRecognition,
+	} = useSpeechRecognition();
 
 	const [userInput, setUserInput] = useState("");
 	const [speaking, setSpeaking] = useState(false);
 
 	useEffect(() => {
-		setUserInput(prev => {
-			console.log(prev);
-			return prev + " " + transcript
-		});
-	}, [transcript])
+		if (speaking) {
+			setUserInput((prev) => (transcript.length > 0 ? transcript : prev));
+		}
+	}, [transcript]);
 
 	const submit = () => {
 		setQuery(userInput);
-		resetTranscript()
+		resetTranscript();
 		setUserInput("");
 	};
 
