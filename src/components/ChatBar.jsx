@@ -26,18 +26,16 @@ const ChatBar = ({ setQuery }) => {
 	} = useSpeechRecognition();
 
 	const [userInput, setUserInput] = useState("");
-	const [speaking, setSpeaking] = useState(false);
+	const [listen, setListen] = useState(false);
 
 	useEffect(() => {
-		if (speaking) {
-			setUserInput((prev) => (transcript.length > 0 ? transcript : prev));
-		}
+		if (listen) setUserInput(transcript);
 	}, [transcript]);
 
 	const submit = () => {
 		setQuery(userInput);
-		resetTranscript();
 		setUserInput("");
+		resetTranscript();
 	};
 
 	// Update the text area
@@ -49,12 +47,12 @@ const ChatBar = ({ setQuery }) => {
 		if (action === "start") {
 			console.log("listening");
 			SpeechRecognition.startListening({ continuous: true });
-			setSpeaking(true);
+			setListen(true);
 		} else {
 			console.log("end");
 			resetTranscript();
 			SpeechRecognition.stopListening();
-			setSpeaking(false);
+			setListen(false);
 		}
 	};
 
@@ -71,7 +69,7 @@ const ChatBar = ({ setQuery }) => {
 				/>
 				<div className="icon__wrapper send__icon__wrapper">
 					<FiSend onClick={submit} className="send__icon message" />
-					{speaking ? (
+					{listen ? (
 						<FaStopCircle
 							className="send__icon stop__recording"
 							onClick={() => handleMicrophone("stop")}
