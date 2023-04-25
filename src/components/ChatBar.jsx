@@ -73,11 +73,9 @@ const ChatBar = ({ setQuery }) => {
 		  }
 
 		if (action === "start") {
-			console.log("listening");
 			SpeechRecognition.startListening({ continuous: true });
 			setListen(true);
 		} else {
-			console.log("end");
 			resetTranscript();
 			SpeechRecognition.abortListening();
 			setListen(false);

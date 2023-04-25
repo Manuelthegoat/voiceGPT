@@ -109,20 +109,20 @@ function App() {
 		}
 	};
 
-	return (
-		// <div className="wrapper">
-		<main>
-			<NavBar />
+	// return (
+	// 	// <div className="wrapper">
+	// 	<main>
+	// 		<NavBar />
 
-			<div className="chat__wrapper">
-				{chats}
-				{loading && <AIAnswer loading={loading} text="..." />}
-			</div>
+	// 		<div className="chat__wrapper">
+	// 			{chats}
+	// 			{loading && <AIAnswer loading={loading} text="..." />}
+	// 		</div>
 
-			<ChatBar setQuery={setQuery} />
-		</main>
-		// </div>
-	);
+	// 		<ChatBar setQuery={setQuery} />
+	// 	</main>
+	// 	// </div>
+	// );
 }
 
 export default App;
