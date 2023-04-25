@@ -43,19 +43,18 @@ const Soon = () => {
 							<div className="mx-auto max-w-md px-4 text-center sm:max-w-2xl sm:px-6 lg:flex lg:items-center lg:px-0 lg:text-left">
 								<div className="lg:py-12">
 									<h1 className="mt-4 text-4xl font-bold tracking-tight text-black sm:mt-5 sm:text-6xl lg:mt-6 xl:text-6xl">
-										<span className="block text-black">
+										<span className="block text-black mb-2">
 											Introducing
 										</span>
-										<span className="block mb-2 text-blue-500">
+										<span className="block text-blue-500 mb-2">
 											VoiceGPT 2.0
 										</span>
-										<span className="block text-black">
-											AI Assistant
-										</span>
+										<p className="md:text-2xl text-lg text-gray-600">
+											The AI Assistant
+										</p>
 									</h1>
 									<p className="mt-3 text-base text-gray-400 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-										Train your AI to speak and answer questions inteliigently typing you
-										rigorously. <br /> VoiceGPT extends ChatGPT. <br /> <br /> Join the waitlist to get
+										Train your AI to speak and answer questions inteliigently, without you typing. Just speak and it happens. <br /> VoiceGPT extends ChatGPT. <br /> <br /> Join the waitlist to get
 										notified when we launch version 2.0!
 									</p>
 
