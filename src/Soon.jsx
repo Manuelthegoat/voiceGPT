@@ -58,20 +58,20 @@ const Soon = () => {
 										notified when we launch version 2.0!
 									</p>
 
-									<div className="mt-10 sm:mt-12">
+									<div className="lg:-ml-4 mt-10 sm:mt-12">
 										<form
-											className="sm:mx-auto sm:max-w-xl lg:mx-0"
+											className="sm:mx-auto sm:max-w-xl"
 											onSubmit={submitEmail}
 										>
-											<div className="sm:flex">
-												<div className="min-w-0 flex-1">
+											<div className="sm:flex justify-center lg:justify-start md:mx-auto">
+											{result !== "success"  && <div className="min-w-0 flex-1">
 													<label
 														htmlFor="email"
 														className="sr-only"
 													>
 														Email address
 													</label>
-													{result !== "success"  && <input
+													 <input
 														id="email"
 														type="email"
 														placeholder="Enter your email"
@@ -83,8 +83,8 @@ const Soon = () => {
 															)
 														}
 														autoComplete="on"
-													/>}
-												</div>
+													/>
+												</div>}
 												<div className="mt-3 sm:mt-0 sm:ml-3">
 													<button
 														type="submit"
@@ -188,7 +188,7 @@ const Soon = () => {
 						</a> */}
 					</div>
 					<p className="mt-8 text-center text-base text-gray-400">
-						© 2023 VoiceGPT. All rights reserved.
+						&copy; 2023 VoiceGPT. All rights reserved.
 					</p>
 				</div>
 			</footer>
