@@ -8,9 +8,10 @@ import { useEffect } from "react";
 const Soon = () => {
 	const [email, setEmail] = useState(" ");
 
-	const [offline, setOffline] = useState()
+	const [offline, setOffline] = useState(!navigator.onLine)
 
 	const [result, setResult] = useState("");
+
 	const submitEmail = async (event) => {
 		event.preventDefault();
 
@@ -37,12 +38,10 @@ const Soon = () => {
 		window.addEventListener("online", () => setOffline(false));
 
 		return () => {
-			window.removeEventListener("offline", setOffline(true))
-			window.removeEventListener("offline", setOffline(false))
+			window.removeEventListener("offline", null)
+			window.removeEventListener("offline", null)
 		};
 	}, [])
-
-	// console.log(offline)
 
 	return (
 		<main className="w-full mx-auto">
@@ -77,6 +76,7 @@ const Soon = () => {
 											className="sm:mx-auto sm:max-w-xl"
 											onSubmit={submitEmail}
 										>
+											{offline && <span className="text-sm text-red-600">Please check your internet connection.</span>}
 											<div className="sm:flex justify-center lg:justify-start md:mx-auto">
 												{result !== "success" && (
 													<div className="min-w-0 flex-1">
@@ -86,7 +86,7 @@ const Soon = () => {
 														>
 															Email address
 														</label>
-														{offline && <span className="text-sm text-red-600">Please check your internet connection.</span>}
+														
 														<input
 															id="email"
 															type="email"
