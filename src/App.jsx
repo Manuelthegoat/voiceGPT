@@ -63,7 +63,7 @@ function App() {
 	const handleSubmit = async (inputQuery) => {
 		try {
 			const configuration = new Configuration({
-				apiKey: "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",
+				apiKey: "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",
 			});
 
 			const openai = new OpenAIApi(configuration);
@@ -77,7 +77,7 @@ function App() {
 					inputQuery,
 				temperature: 0.2,
 				top_p: 1,
-				max_tokens: 3890,
+				max_tokens: 2000,
 				presence_penalty: 0,
 				frequency_penalty: 0.5,
 				// n: 1,
@@ -109,20 +109,20 @@ function App() {
 		}
 	};
 
-	// return (
-	// 	// <div className="wrapper">
-	// 	<main>
-	// 		<NavBar />
+	return (
+		// <div className="wrapper">
+		<main>
+			<NavBar />
 
-	// 		<div className="chat__wrapper">
-	// 			{chats}
-	// 			{loading && <AIAnswer loading={loading} text="..." />}
-	// 		</div>
+			<div className="chat__wrapper">
+				{chats}
+				{loading && <AIAnswer loading={loading} text="..." />}
+			</div>
 
-	// 		<ChatBar setQuery={setQuery} />
-	// 	</main>
-	// 	// </div>
-	// );
+			<ChatBar setQuery={setQuery} />
+		</main>
+		// </div>
+	);
 }
 
 export default App;
