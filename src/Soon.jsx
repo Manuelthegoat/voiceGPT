@@ -3,9 +3,12 @@ import robot from "./assets/images/robot.png";
 import React, { useState } from "react";
 import { collectionRef, db } from "./config/firebase";
 import { addDoc } from "firebase/firestore";
+import { useEffect } from "react";
 
 const Soon = () => {
 	const [email, setEmail] = useState(" ");
+
+	const [offline, setOffline] = useState()
 
 	const [result, setResult] = useState("");
 	const submitEmail = async (event) => {
@@ -15,14 +18,31 @@ const Soon = () => {
 			return;
 		}
 
+		if (offline === true) {
+			setResult('failed');
+			return
+		}
+
 		try {
 			setResult("sending");
 			const result = await addDoc(collectionRef, {email});
-			result.id && setResult('success')
+			result.id ? setResult('success') : setResult('failed')
 		} catch (err) {
 			setResult("failed")
 		}
 	};
+
+	useEffect(() => {
+		window.addEventListener("offline", () => setOffline(true));
+		window.addEventListener("online", () => setOffline(false));
+
+		return () => {
+			window.removeEventListener("offline", setOffline(true))
+			window.removeEventListener("offline", setOffline(false))
+		};
+	}, [])
+
+	// console.log(offline)
 
 	return (
 		<main className="w-full mx-auto">
@@ -66,7 +86,7 @@ const Soon = () => {
 														>
 															Email address
 														</label>
-														{result === "failed" && <span className="text-sm text-red-600">An Error occured. Please check internet & try again.</span>}
+														{offline && <span className="text-sm text-red-600">An Please check your internet connection.</span>}
 														<input
 															id="email"
 															type="email"
