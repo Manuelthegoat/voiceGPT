@@ -4,11 +4,12 @@ import React, { useState } from "react";
 import { collectionRef, db } from "./config/firebase";
 import { addDoc } from "firebase/firestore";
 import { useEffect } from "react";
+import "./App.css";
 
 const Soon = () => {
 	const [email, setEmail] = useState(" ");
 
-	const [offline, setOffline] = useState(!navigator.onLine)
+	const [offline, setOffline] = useState(!navigator.onLine);
 
 	const [result, setResult] = useState("");
 
@@ -20,16 +21,16 @@ const Soon = () => {
 		}
 
 		if (offline === true) {
-			setResult('failed');
-			return
+			setResult("failed");
+			return;
 		}
 
 		try {
 			setResult("sending");
-			const result = await addDoc(collectionRef, {email});
-			result.id ? setResult('success') : setResult('failed')
+			const result = await addDoc(collectionRef, { email });
+			result.id ? setResult("success") : setResult("failed");
 		} catch (err) {
-			setResult("failed")
+			setResult("failed");
 		}
 	};
 
@@ -38,10 +39,10 @@ const Soon = () => {
 		window.addEventListener("online", () => setOffline(false));
 
 		return () => {
-			window.removeEventListener("offline", null)
-			window.removeEventListener("offline", null)
+			window.removeEventListener("offline", null);
+			window.removeEventListener("offline", null);
 		};
-	}, [])
+	}, []);
 
 	return (
 		<main className="w-full mx-auto">
@@ -76,7 +77,12 @@ const Soon = () => {
 											className="sm:mx-auto sm:max-w-xl"
 											onSubmit={submitEmail}
 										>
-											{offline && <span className="text-sm text-red-600">Please check your internet connection.</span>}
+											{offline && (
+												<span className="text-sm text-red-600">
+													Please check your internet
+													connection.
+												</span>
+											)}
 											<div className="sm:flex justify-center lg:justify-start md:mx-auto">
 												{result !== "success" && (
 													<div className="min-w-0 flex-1">
@@ -86,7 +92,7 @@ const Soon = () => {
 														>
 															Email address
 														</label>
-														
+
 														<input
 															id="email"
 															type="email"
@@ -206,7 +212,8 @@ const Soon = () => {
 						</a> */}
 					</div>
 					<p className="mt-8 text-center text-base text-gray-400">
-						&copy; {new Date().getFullYear()} VoiceGPT. All rights reserved.
+						&copy; {new Date().getFullYear()} VoiceGPT. All rights
+						reserved.
 					</p>
 				</div>
 			</footer>
