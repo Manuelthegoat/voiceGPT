@@ -86,7 +86,7 @@ const Soon = () => {
 														>
 															Email address
 														</label>
-														{offline && <span className="text-sm text-red-600">An Please check your internet connection.</span>}
+														{offline && <span className="text-sm text-red-600">Please check your internet connection.</span>}
 														<input
 															id="email"
 															type="email"
