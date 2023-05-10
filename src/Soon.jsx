@@ -1,6 +1,8 @@
 import robot from "./assets/images/robot.png";
 
 import React, { useState } from "react";
+import { collectionRef, db } from "./config/firebase";
+import { addDoc } from "firebase/firestore";
 
 const Soon = () => {
 	const [email, setEmail] = useState(" ");
@@ -10,27 +12,15 @@ const Soon = () => {
 		event.preventDefault();
 
 		if (!email.includes("@")) {
-			console.log("Noooo");
 			return;
 		}
 
-		setResult("sending");
-		const formData = new FormData(event.target);
-
-		formData.append("access_key", "f3858206-f861-432b-a0e8-dbb0290137bb");
-
-		const res = await fetch("https://api.web3forms.com/submit", {
-			method: "POST",
-			body: formData,
-		}).then((res) => res.json());
-
-		if (res.success) {
-			console.log("success", res);
-			setEmail("");
-			setResult("success");
-		} else {
-			console.log("error", res);
-			setResult("error");
+		try {
+			setResult("sending");
+			const result = await addDoc(collectionRef, {email});
+			result.id && setResult('success')
+		} catch (err) {
+			setResult("failed")
 		}
 	};
 
@@ -54,8 +44,12 @@ const Soon = () => {
 										</p>
 									</h1>
 									<p className="mt-3 text-base text-gray-400 sm:mt-5 sm:text-xl lg:text-lg xl:text-xl">
-										Train your AI to speak and answer questions inteliigently, without you typing. Just speak and it happens. <br /> VoiceGPT extends ChatGPT. <br /> <br /> Join the waitlist to get
-										notified when we launch version 2.0!
+										Train your AI to speak and answer
+										questions inteliigently, without you
+										typing. Just speak and it happens.{" "}
+										<br /> VoiceGPT extends ChatGPT. <br />{" "}
+										<br /> Join the waitlist to get notified
+										when we launch version 2.0!
 									</p>
 
 									<div className="lg:-ml-4 mt-10 sm:mt-12">
@@ -64,27 +58,31 @@ const Soon = () => {
 											onSubmit={submitEmail}
 										>
 											<div className="sm:flex justify-center lg:justify-start md:mx-auto">
-											{result !== "success"  && <div className="min-w-0 flex-1">
-													<label
-														htmlFor="email"
-														className="sr-only"
-													>
-														Email address
-													</label>
-													 <input
-														id="email"
-														type="email"
-														placeholder="Enter your email"
-														className="block w-full rounded-md border-0 bg-gray-200 px-4 py-3 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400"
-														value={email}
-														onChange={(e) =>
-															setEmail(
-																e.target.value
-															)
-														}
-														autoComplete="on"
-													/>
-												</div>}
+												{result !== "success" && (
+													<div className="min-w-0 flex-1">
+														<label
+															htmlFor="email"
+															className="sr-only"
+														>
+															Email address
+														</label>
+														{result === "failed" && <span className="text-sm text-red-600">An Error occured. Please check internet & try again.</span>}
+														<input
+															id="email"
+															type="email"
+															placeholder="Enter your email"
+															className="block w-full rounded-md border-0 bg-gray-200 px-4 py-3 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-400"
+															value={email}
+															onChange={(e) =>
+																setEmail(
+																	e.target
+																		.value
+																)
+															}
+															autoComplete="on"
+														/>
+													</div>
+												)}
 												<div className="mt-3 sm:mt-0 sm:ml-3">
 													<button
 														type="submit"
@@ -100,7 +98,7 @@ const Soon = () => {
 															<span className="btn-loader"></span>
 														) : result ===
 														  "success" ? (
-															"Successful. We will be in touch with you soon!"
+															"Success. We will be in touch with you soon!"
 														) : (
 															"Join Waitlist"
 														)}
@@ -188,7 +186,7 @@ const Soon = () => {
 						</a> */}
 					</div>
 					<p className="mt-8 text-center text-base text-gray-400">
-						&copy; 2023 VoiceGPT. All rights reserved.
+						&copy; {new Date().getFullYear()} VoiceGPT. All rights reserved.
 					</p>
 				</div>
 			</footer>
